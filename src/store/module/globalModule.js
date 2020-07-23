@@ -3,7 +3,7 @@ const stack = []
 const globalModule = {
   namespaced: true, // 启用命名空间
   state: {
-    loading: false,
+    loading: false
   },
   mutations: {
     SET_LOADING (state, bool) {
@@ -12,7 +12,7 @@ const globalModule = {
   },
   actions: {
     // 在同事触发多个loading的时候， 只有最后一个响应结束后在触发loading效果
-    changeLoading({ commit, state }, boolean) {
+    changeLoading ({ commit, state }, boolean) {
       if (boolean) {
         stack.push(true)
         if (!state.loading) {
@@ -25,7 +25,7 @@ const globalModule = {
         }
       }
     },
-    closeAllLoading({ commit }) {
+    closeAllLoading ({ commit }) {
       commit('SET_LOADING', false)
       stack.length = 0
     }
